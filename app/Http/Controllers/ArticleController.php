@@ -17,24 +17,16 @@ class ArticleController extends Controller
     const DEFAULT_PAGINATE=10;
     public function index()
     {
-        $articles = Article::with(['primaryCategory'])->paginate(self::DEFAULT_PAGINATE);
+        $articles = Article::with(['primaryCategory'])->paginate(self::DEFAULT_PAGINATE)->onEachSide(0);
         $categories = Categories::all();
         return Response::json(['articles' => $articles,'categories'=>$categories]);
-
     }
 
     public function search()
     {
-        $category = \request()->get('category', null);
-     /*   $articles = Article::has('articleCategories', '>', 1)->with(['articleCategories' => function ($query) use ($category) {
-            return $query->where('category_id', $category);
-        }])->paginate(self::DEFAULT_PAGINATE);*/
-
-        //\DB::enableQueryLog();
-        $articles = Article::search(request())->paginate(self::DEFAULT_PAGINATE);
-        //dd(\DB::getQueryLog());
-        return Response::json(['articles' => $articles]);
-
+        $categories = Categories::all();
+        $articles = Article::with(['primaryCategory'])->search(request())->paginate(self::DEFAULT_PAGINATE)->onEachSide(0);
+        return Response::json(['articles' => $articles, 'categories' => $categories]);
     }
 
 

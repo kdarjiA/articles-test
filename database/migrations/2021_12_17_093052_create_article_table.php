@@ -13,12 +13,12 @@ class CreateArticleTable extends Migration
      */
     public function up()
     {
-        Schema::create('article', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug');
             $table->longText('content')->nullable();
-            $table->string('parent_category_id');
+            $table->string('primary_category_id')->nullable();
             $table->timestamps();
         });
 

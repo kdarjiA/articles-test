@@ -18,6 +18,13 @@ class CreateCategoriesTable extends Migration
             $table->string('category_name');
             $table->timestamps();
         });
+        Schema::create('articles_categories', function (Blueprint $table) {
+            $table->bigInteger('article_id')->unsigned();
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
+        });
     }
 
     /**

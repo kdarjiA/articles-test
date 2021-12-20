@@ -20,8 +20,11 @@ class CreateMediaTable extends Migration
         });
 
         Schema::create('media_article', function (Blueprint $table) {
-            $table->string('media_id');
-            $table->string('article_id');
+            $table->bigInteger('media_id')->unsigned();
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
+            $table->bigInteger('article_id')->unsigned();
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+
         });
     }
 

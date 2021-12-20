@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ArticleSeeder extends Seeder
 {
@@ -15,35 +16,6 @@ class ArticleSeeder extends Seeder
     {
         $path = storage_path() . "/json/feed.json";
         $json_data = json_decode(file_get_contents($path), true);
-        /*  $categories = [];
-          $articles = [];
-          $media_urls = [];
-          foreach ($json_data as $index=>$data) {
-              if (!empty($data['media'])) {
-                  foreach ($data['media'] as $media) {
-                      if (!empty($media['media']['attributes']) && !in_array($media['media']['attributes']['url'], $media_urls)) {
-                          $media_urls[] = ['media_url' => $media['media']['attributes']['url']];
-                      }
-                  }
-              }
-              if (!empty($data['categories'])) {
-                  if (!empty($data['categories']['primary']) && !in_array($data['categories']['primary'],$categories)) {
-                      $categories[] = ['category_name'=>$data['categories']['primary']];
-                  }
-                  if (!empty($data['categories']['additional'])) {
-                      foreach ($data['categories']['additional'] as $cat) {
-                          if (!in_array($cat, $categories)) {
-                              $categories[] =  ['category_name'=>$cat] ;
-                          }
-                      }
-                  }
-              }
-          }
-          \App\Models\Categories::insert($categories);
-          \App\Models\media::insert($media_urls);
-          die;*/
-
-
         foreach ($json_data as $index => $data) {
             $content = !empty($data['content']) ? $data['content'][0]['content'] : '';
             $article = new \App\Models\Article();

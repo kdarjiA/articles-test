@@ -1,8 +1,8 @@
 <template>
-    <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+    <div class="bg-white px-4 py-6 flex items-center justify-center border-t border-gray-200 sm:px-6">
         <div class="flex-1 flex justify-between sm:hidden">
         </div>
-        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-center mx-auto">
             <div>
                 <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                     <div v-for="link in data.links">
@@ -29,13 +29,13 @@ export default {
     },
     methods: {
         onPaginationChangePage(link) {
-
-            var url_string = link.url;
-            var url = new URL(url_string);
-            var page = url.searchParams.get("page");
-            console.log(page);
-            this.selected_page = page;
-            this.$emit('pagination-change-page', page);
+            if (!_.isEmpty(link.url)) {
+                var url_string = link.url;
+                var url = new URL(url_string);
+                var page = url.searchParams.get("page");
+                this.selected_page = page;
+                this.$emit('pagination-change-page', page);
+            }
         }
     },
 }</script>
