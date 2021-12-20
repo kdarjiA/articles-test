@@ -33,7 +33,7 @@ You can now access the server at http://localhost:8000 or  http://127.0.0.1:8000
 
 How long did you spend on the coding test? What would you add to your solution if you had more time? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
 
-       I had spent around 5-6 hours on the test. 2 hours for setup the project , create api and created the model and vue js files. other time for the creating the migration and other things.
+       I spent around 5-6 hours on the test. If I had more time I  would like to implement repository design pattern.
 
 How would you track down a performance issue in production? Have you ever had to do this?
 
