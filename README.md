@@ -27,7 +27,7 @@ Start the local development server
 
     php artisan serve
 
-You can now access the server at http://localhost:8000
+You can now access the server at http://localhost:8000 or  http://127.0.0.1:8000
 
 ## Technical questions
 
